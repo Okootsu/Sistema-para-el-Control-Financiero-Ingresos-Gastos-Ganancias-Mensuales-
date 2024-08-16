@@ -1,0 +1,329 @@
+body {
+    font-family: Arial;
+    background-color: #ECF0F1
+}
+
+header {
+    color: white;
+}
+
+.cabecera {
+    display: flex;
+    background: linear-gradient(45deg, #2468df, #2a5298);
+    padding: 5px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    color: white;
+    text-shadow: black;
+}
+
+.footer_main{
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 15px;
+    background: linear-gradient(45deg, #2468df, #2a5298);
+    color: white;
+    text-shadow: black;
+}
+
+a {
+    padding: 0px 50px;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    background-color: rgba(226, 226, 226, 0.637);
+    border-radius: 5px;
+}
+
+a:active {
+    background-color: rgba(211, 211, 211, 0.74)
+}
+
+.contenedor {
+    border: 2px solid;
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 600px;
+    background-color: white;
+}
+
+/* Seccion del Login*/
+.iniciar_registrar a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.login-inicio {
+    margin: 20px auto;
+    width: 300px;
+}
+
+.login-screen {
+    background-color: #ffffff;
+    border: solid;
+    padding: 20px;
+    border-radius: 10px
+}
+
+.login-form {
+    text-align:left;
+}
+
+.app-title {
+    text-align: center;
+    color: #777;
+}
+
+.control-group {
+    margin-bottom: 10px;
+}
+
+.login {
+    font-family: Arial;
+    background-color: #ECF0F1;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Final del formulario del Login */
+
+/* Estilo de los Input */
+input {
+    text-align: center;
+    background-color: #ECF0F1;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 10px 0;
+    width: 250px;
+    transition: border .5s;
+}
+
+input:focus {
+    border: 2px solid #3498DB;
+    box-shadow: none;
+}
+
+/* Estilo de los Botones */
+.btn {
+    border: 2px solid transparent;
+    background: #3498DB;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 10px 0;
+    text-decoration: none;
+    text-shadow: none;
+    border-radius: 10px;
+    box-shadow: none;
+    transition: 0.25s;
+    display: block;
+    width: 250px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2980B9;
+    border-radius: 10px;
+}
+
+.btn:active{
+    background-color: #20618d;
+}
+/* Final de los Botones */
+
+.btn_accion{
+    display: inline-flex;
+    margin: 10px;
+    width: 130px;
+    text-align: center;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mensaje de Bienvenida */
+#bienvenida {
+    font-size: 30px;
+    padding: 5px 25px;
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+#bienvenida p{
+    margin: 5px;
+}
+
+#mensaje_bienvenida {
+    font-size: 15px;
+    color: #777;
+    padding-bottom: 5px;
+}
+
+
+.contenedor_opciones {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+}
+
+.mostrar_informacion{
+    width: 95%;
+}
+
+form {
+    text-align: center;
+}
+
+.botones_accion {
+    display: flex;
+    justify-content: center;
+}
+
+#btn_add_contenido {
+    align-items: center;
+    margin: 10px;
+}
+
+#btn_add_ingreso, #btn_add_gasto, #btn_cerrar_opcion {
+    margin: 10px;
+    width: 130px;
+}
+
+#modal_ingresos {
+    max-width: 400px;
+    max-height: 400px;
+    margin-top: 100px;
+}
+
+#modal_gastos {
+    max-width: 400px;
+    max-height: 400px;
+    margin-top: 100px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.247);
+}
+
+#btn_enviar_datos_1, #btn_enviar_datos_2, #btn_cerrar_modal_ingreso, #btn_cerrar_modal_gasto {
+    margin: 10px;
+    width: 130px;
+}
+
+#tabla {
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 95%;
+}
+
+#tabla th, #tabla td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#tabla tr:hover {
+    background-color: rgba(0, 0, 0, 0.459);
+}
+
+#tabla th{
+    background-color: #007BFF;
+    color: white;
+}
+
+#tabla td{
+    background-color: rgba(226, 226, 226, 0.658);
+}
+
+#tabla_informacion {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    width: 95%;
+    margin-bottom: 20px;
+}
+
+#modal_opciones {
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+.action{
+    display: flex;
+    gap:10px
+}
+
+#editar {
+    background-color: #FFC107;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#editar:hover{
+    background-color: #cf9d06;
+}
+
+#eliminar {
+    background-color: #DC3545;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#eliminar:hover{
+    background-color: #aa2936;
+}
+
+
+.cerrar{
+    margin: 10px;
+    width: 130px;
+}
+
+h2{
+    margin-left: 20px;
+}
+
+.alert-danger{
+    display: flex;
+    justify-content: center;
+    color: #f8152c;
+}
+
+
+.alert-danger b{
+    background-color: #ff061f23;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+select {
+    text-align: center;
+    background-color: #ECF0F1;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 10px 0;
+    width: 250px;
+    transition: border .5s;
+}
+select:focus {
+    border-color: #007bff;
+    border: 2px solid transparent;
+    outline: none;
