@@ -18,7 +18,7 @@ function cerrar_gastos() {
     modal_gastos.close();
 }
 
-// Funcion para Mostrar el modal de las opciones
+// Funcion para mostrar el modal de las opciones
 const modal_opciones = document.querySelector("#modal_opciones");
 function abrir_opciones() {
     modal_opciones.showModal();
@@ -37,14 +37,34 @@ function eliminar_ingreso(id) {
 // Funcion para eliminar los registros de la tabla de gastos
 function eliminar_gasto(id) {
     if (confirm("¿Desea realizar esta accion? esta operacion es irreversible")) {
-        window.location.href= "eliminar_registro_gasto.php?id=" + id;
+        window.location.href= "php/eliminar_registro_gasto.php?id=" + id;
     }
 }
 
 // Funcion para eliminar usuario
 function eliminar_usuario(id) {
     if (confirm("¿Desea realizar esta accion? esta operacion es irreversible")) {
-        window.location.href= "eliminar_usuario.php?id=" + id;
+        window.location.href= "php/eliminar_usuario.php?id=" + id;
     }
 }
 
+// Seleccionamos todos los campos con las clases especificadas
+var tasaBCVElements = document.getElementsByClassName('tasa_bcv');
+var montoDolaresElements = document.getElementsByClassName('monto_dolares');
+var montoBolivaresElements = document.getElementsByClassName('monto_bolivares');
+    
+// Añadimos eventos de escucha a todos los campos relevantes
+for (var i = 0; i < tasaBCVElements.length; i++) {
+    tasaBCVElements[i].addEventListener('input', calcularBolivares);
+    montoDolaresElements[i].addEventListener('input', calcularBolivares);
+}
+
+// Función genérica para calcular los bolívares
+function calcularBolivares() {
+    for (var i = 0; i < tasaBCVElements.length; i++) {
+        var tasaBCV = parseFloat(tasaBCVElements[i].value) || 0;
+        var montoDolares = parseFloat(montoDolaresElements[i].value) || 0;
+        var montoBolivares = tasaBCV * montoDolares;
+        montoBolivaresElements[i].value = montoBolivares.toFixed(2);
+    }
+}

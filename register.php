@@ -5,20 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+
+    <!-- Link para vincular el css -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<header>
-    <div class="cabecera">
-        <p><b>La Fortaleza C.A RIF: J-090345234</b></p>
-        <div class="iniciar_registrar">
-            <a href="login.php">Iniciar Sesion</a>
-            <a href="register.php">Registrarse</a>
-        </div>
-    </div>
-</header>
 
 <body>
+    <header>
+        <div class="cabecera">
+            <p><b>La Fortaleza C.A RIF: J-090345234</b></p>
+            <div class="iniciar_registrar">
+                <a href="login.php">Iniciar Sesion</a>
+                <a href="register.php">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Formulario para el registro de los usuarios -->
     <div class="login">
         <div class="login-inicio">
             <div class="login-screen">
@@ -27,6 +31,7 @@
                         <img src="resource/Login.jpg" width="70" height="70">
                         <p style="text-align: left;">Registro de Usuarios</p>
                         <?php
+                        # Vinculamos los archivos de conexion y registro de usuarios
                         include("php/conexion_db.php");
                         include("php/registro_usuarios.php");
                         ?>
@@ -57,13 +62,11 @@
             </div>
         </div>
     </div>
+
+    <footer>
+	    <h3>Sistema para el Control Financiero</h3>
+	    <b>© 2024 Copyright</b>
+    </footer>
+
 </body>
-
-<footer>
-	<div class="footer_main">
-		<h3>Sistema para el Control Financiero</h3>
-		<b>© Copyright  2024</b>
-	</div>
-</footer>
-
 </html>

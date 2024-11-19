@@ -2,8 +2,8 @@
 # Iniciamos una session
 session_start();
 
-# Verificamos si el usuario inicio sesion si no lo regresamos a la pagina de "login"
-if (empty($_SESSION["cedula"])) {
+# Verificamos si se inicio sesion y verificamos si el usuario es administrador si no es asi se redirique a la pagina de "login"
+if (empty($_SESSION["cedula"]) || $_SESSION["nivel_autorizacion"] !== "admin") {
     header("location:login.php");
 }
 ?>
@@ -13,7 +13,7 @@ if (empty($_SESSION["cedula"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Admin Usuarios</title>
 
     <!-- Link para vincular el css -->
     <link rel="stylesheet" href="css/style.css">
@@ -39,10 +39,10 @@ if (empty($_SESSION["cedula"])) {
         <p id="mensaje_bienvenida">Bienvenido al Sistema de Gestion de Ingresos y Gastos</p>
     </div>
 
-    <!-- Contenedor con las opciones para el menu del usuario  -->
+    <!-- Contenedor con las opciones para el menu del usuario -->
     <div class="contenedor contenedor_opciones">
         <?php 
-        # Verificamos si el usuario que inicio sesion es "administrador" si es asi, activamos la opcion para admistrar a los usuarios 
+        # Verificamos si el usuario que inicio sesion es "administrador" si es asi, activamos la opcion para admistrar a los usuarios
         if ($_SESSION["nivel_autorizacion"] == "admin") {
             echo "<a class='btn btn_accion' href='admin_usuarios.php'>Gestionar Usuarios</a>";
         }
@@ -53,13 +53,58 @@ if (empty($_SESSION["cedula"])) {
         <a class="btn btn_accion" href="mostrar_datos_gastos.php">Gastos</a>
         <a class="btn btn_accion" href="ganancias.php">Generar reporte</a>
     </div>
-
-    <!-- Imagen de la pagina de inicio  -->
+    
+    <!-- Contenedor para mostrar la tabla de los usuarios registrados -->
     <div class="contenedor mostrar_informacion">
-        <h2>Sistema para el Control Financiero</h2>
-        <center> <img src="resource/Logo.png"> </center>
-    </div>
+        <?php
+        # Incluimos la conexion a la base de datos
+        include("php/conexion_db.php");
+        
+        # Hacemos la consulta a la base de datos
+        $sql = $connect->query("SELECT * FROM usuarios");
 
+        # Verificamos si existen datos lo mostramos al usuario y si no se le muestra un mensaje
+        if($sql->num_rows >0){
+            ?>
+            <h2>Usuarios Registrados</h2>
+            <div id='tabla_informacion'>
+            <table id='tabla'>
+            <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nivel de autorizacion</th>
+            <th>Acciones</th>
+            </tr>
+            <?php
+            while ($row = $sql->fetch_array()){
+                $cedula = $row["cedula"];
+                $nombre = $row["nombre"];
+                $apellido = $row["apellido"];
+                $nivel_usuario = $row["nivel_autorizacion"];
+                ?>
+                <tr>
+                <td><?=$cedula?></td>
+                <td><?=$nombre?></td>
+                <td><?=$apellido?></td>
+                <td><?=$nivel_usuario?></td>
+                <td class='action'> <a class='editar' id='editar' href='php/editar_usuario.php?id=<?=$cedula?>'>Editar</a> <a class='eliminar' id='eliminar' onclick='eliminar_usuario(<?=$cedula?>)'>Eliminar</a> </td>
+                </tr>
+                <?php
+            }
+        ?>
+        </table>
+        </div>
+        <?php
+        }else {
+            ?>
+            <div class='alert-danger'>
+            <b>No hay resultados</b
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 
     <!-- Modal de las opciones para los ingresos y gastos -->
     <dialog id="modal_opciones">
@@ -137,10 +182,8 @@ if (empty($_SESSION["cedula"])) {
     </dialog>
 
     <footer>
-	    <div class="footer_main">
-	    	<h3>Sistema para el Control Financiero</h3>
-	    	<b>© Copyright  2024</b>
-	    </div>
+		<h3>Sistema para el Control Financiero</h3>
+		<b>© Copyright  2024</b>
     </footer>
 
     <script src="js/script.js"></script>   
