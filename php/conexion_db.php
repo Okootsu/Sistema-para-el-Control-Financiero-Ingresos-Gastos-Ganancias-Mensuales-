@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "superadmin";
+$password = "";
 $dbname = "la_fortaleza_ca";
 $port = "3306";
 
